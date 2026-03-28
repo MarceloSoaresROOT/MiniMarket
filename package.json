@@ -19,6 +19,8 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "expres": "^0.0.5"
+    "expres": "^0.0.5",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0"
   }
 }
