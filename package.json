@@ -1,0 +1,24 @@
+{
+  "name": "minimarket",
+  "version": "1.0.0",
+  "description": "Criando um Mini Mercado Utilizando Node e Express, com validações",
+  "homepage": "https://github.com/MarceloSoaresROOT/MiniMarket#readme",
+  "bugs": {
+    "url": "https://github.com/MarceloSoaresROOT/MiniMarket/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarceloSoaresROOT/MiniMarket.git"
+  },
+  "license": "ISC",
+  "author": "Marcelo Henrique",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "expres": "^0.0.5"
+  }
+}
