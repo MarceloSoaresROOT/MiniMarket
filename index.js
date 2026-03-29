@@ -1,15 +1,20 @@
 import express from 'express';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const host = 'localhost';
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
 app.use(cookieParser());
-app.use(express.static('.'));
+app.use(express.static(__dirname));
 
 let produtos = [];
 
@@ -24,7 +29,7 @@ app.get('/', (req, res) => {
     if (req.session.user) {
         res.redirect('/cadastro');
     } else {
-        res.sendFile('login.html', { root: '.' });
+        res.sendFile(join(__dirname, 'login.html'));
     }
 });
 
@@ -74,7 +79,7 @@ app.get('/cadastro', ensureAuthenticated, (req, res) => {
             </nav>
             <div class="container mt-5">
                 <div class="text-center mb-4">
-                    <img src="Imagens/loogo.png" alt="Logo" class="img-fluid" style="max-width: 200px;">
+                    <img src="/Imagens/loogo.png" alt="Logo" class="img-fluid" style="max-width: 200px;">
                 </div>
                 <div class="card shadow-lg border-0">
                     <div class="card-header bg-primary text-white">
@@ -168,7 +173,7 @@ app.get('/produtos', ensureAuthenticated, (req, res) => {
             </nav>
             <div class="container mt-5">
                 <div class="text-center mb-4">
-                    <img src="Imagens/loogo.png" alt="Logo" class="img-fluid" style="max-width: 200px;">
+                    <img src="/Imagens/loogo.png" alt="Logo" class="img-fluid" style="max-width: 200px;">
                 </div>
                 <div class="card shadow-lg border-0">
                     <div class="card-header bg-primary text-white">
@@ -195,3 +200,12 @@ app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
 });
+
+// Start server locally (not on Vercel)
+if (!process.env.VERCEL) {
+    app.listen(port, host, () => {
+        console.log(`Server running at http://${host}:${port}/`);
+    });
+}
+
+export default app;
