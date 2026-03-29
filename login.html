@@ -10,16 +10,16 @@
     <div class="container min-vh-100 d-flex justify-content-center align-items-center">
         <div class="card shadow-lg w-100" style="max-width: 420px;">
             <div class="card-body text-center">
-                <img src="Imagens/loogo.png" alt="Logo" class="img-fluid mb-3" style="max-width: 150px;">
+                <img src="/Imagens/loogo.png" alt="Logo - MiniMarket" class="img-fluid mb-3" style="max-width: 150px;">
                 <h2 class="card-title mb-4">Autenticação do Sistema</h2>
-                <form action='/login' method='POST' class="needs-validation" novalidate>
+                <form action='/login' method='POST' class="needs-validationn" novalidate>
                     <div class="mb-3">
-                        <label for="usuario" class="form-label">Usuário:</label>
-                        <input type="text" class="form-control" id="usuario" name="usuario" required>
+                        <label for="usuario" class="form-label">Usuário</label>
+                        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="admin" required>
                     </div>
                     <div class="mb-3">
-                        <label for="senha" class="form-label">Senha:</label>
-                        <input type="password" class="form-control" id="senha" name="senha" required>
+                        <label for="senha" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="admin" required>
                     </div>
                     <button class="btn btn-primary w-100" type="submit">Login</button>
                 </form>
